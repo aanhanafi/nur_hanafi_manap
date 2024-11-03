@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Data Gaji</title>
+    <style>
+        .icon-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .logout-button {
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <a class="navbar-brand" href="#" style="font-weight: bold; color: #007bff;">Manajemen Karyawan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">    
+                <li class="nav-item"><a class="nav-link" href="index.html">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="karyawan.html">Data Karyawan</a></li>
+                <li class="nav-item"><a class="nav-link" href="jabatan.html">Data Jabatan</a></li>
+                <li class="nav-item"><a class="nav-link" href="divisi.html">Data Divisi</a></li>
+                <li class="nav-item"><a class="nav-link" href="absensi.html">Absensi</a></li>
+                <li class="nav-item active"><a class="nav-link" href="gaji.html">Data Gaji</a></li>
+            </ul>
+            <a class="nav-link btn btn-outline-danger" href="#" onclick="confirmLogout();">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h3>Data Gaji</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Divisi</th>
+                    <th>Jabatan</th>
+                    <th>Gaji</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="gajiTableBody">
+                <!-- Data gaji akan diisi di sini -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const gajiData = [
+            { divisi: "Keuangan", jabatan: "Manager", gaji: 8000000 },
+            { divisi: "Keuangan", jabatan: "Senior", gaji: 7000000 },
+            { divisi: "Sumber Daya Manusia", jabatan: "Supervisor", gaji: 6000000 },
+            { divisi: "Sumber Daya Manusia", jabatan: "Staff", gaji: 5000000 },
+            { divisi: "Produksi", jabatan: "Senior Staff", gaji: 5500000 },
+            { divisi: "Produksi", jabatan: "Assistant Manager", gaji: 6000000 },
+            { divisi: "Pemasaran", jabatan: "HR Specialist", gaji: 4800000 },
+            { divisi: "Pemasaran", jabatan: "Finance Officer", gaji: 4900000 },
+            { divisi: "Teknologi Informasi", jabatan: "IT Support", gaji: 4500000 },
+            { divisi: "Logistik", jabatan: "Logistics Coordinator", gaji: 4700000 },
+            { divisi: "Penjualan", jabatan: "Marketing Executive", gaji: 5200000 },
+            { divisi: "Customer Service", jabatan: "Junior", gaji: 4200000 },
+            { divisi: "Riset dan Pengembangan", jabatan: "Senior Staff", gaji: 6000000 },
+            { divisi: "Kualitas", jabatan: "Manager", gaji: 7500000 }
+        ];
+
+        function displayGajiData() {
+            const tableBody = document.getElementById("gajiTableBody");
+            gajiData.forEach((gaji, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${gaji.divisi}</td>
+                    <td>${gaji.jabatan}</td>
+                    <td>Rp ${gaji.gaji.toLocaleString()}</td>
+                    <td>
+    <button class="karyawan-btn karyawan-btn-warning" title="Edit Data">
+        <i class="fas fa-edit"></i>
+    </button>
+</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Menampilkan data gaji saat halaman dimuat
+        window.onload = displayGajiData;
+
+        function confirmLogout() {
+            if (confirm("Apakah Anda yakin ingin logout?")) {
+                // Jika ya, redirect ke halaman login
+                window.location.href = 'logout.html';
+            }
+        }
+    </script>
+</body>
+</html>

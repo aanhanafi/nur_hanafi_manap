@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .login-form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-form h3 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h3>Login</h3>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" required value="admin">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" required value="password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <div id="loginMessage" class="alert mt-3" style="display: none;"></div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah reload halaman
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Contoh logika validasi (ganti dengan logika Anda sendiri)
+            if (username === "admin" && password === "password") {
+                // Simpan sesi pengguna
+                sessionStorage.setItem('userSession', username);
+
+                // Redirect ke halaman dashboard setelah login
+                window.location.href = "index.html"; // Ganti sesuai nama file dashboard Anda
+            } else {
+                // Tampilkan pesan error
+                const messageDiv = document.getElementById('loginMessage');
+                messageDiv.style.display = 'block';
+                messageDiv.className = 'alert alert-danger';
+                messageDiv.innerText = 'Username atau password salah.';
+            }
+        });
+    </script>
+</body>
+</html>

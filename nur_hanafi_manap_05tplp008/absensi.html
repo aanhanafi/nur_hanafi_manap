@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Karyawan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <a class="navbar-brand" href="#" style="font-weight: bold; color: #007bff;">Manajemen Karyawan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="karyawan.html">Data Karyawan</a></li>
+                <li class="nav-item"><a class="nav-link" href="jabatan.html">Data Jabatan</a></li>
+                <li class="nav-item"><a class="nav-link" href="divisi.html">Data Divisi</a></li>
+                <li class="nav-item"><a class="nav-link" href="absensi.html">Absensi</a></li>
+                <li class="nav-item"><a class="nav-link" href="gaji.html">Data Gaji</a></li>
+            </ul>
+            <a class="nav-link btn btn-outline-danger" href="#" onclick="confirmLogout();">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Absensi Karyawan</h2>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#absensi">Absensi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#izin">Izin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#lembur">Lembur</a>
+            </li>
+        </ul>
+        
+        <div class="tab-content">
+            <div class="tab-pane container active" id="absensi">
+                <h3>Data Absensi</h3>
+                <button class="icon-button">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="tooltip-text">Tambah Data</span>
+                </button>
+                <table class="table table-striped table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr><th>No</th>
+                            <th>Nama</th>
+                            <th>Tanggal</th>
+                            <th>Jam Masuk</th> <!-- Kolom Jam Masuk -->
+                            <th>Jam Keluar</th> <!-- Kolom Jam Keluar -->
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="absensiTableBody">
+                        <!-- Data absensi akan diisi di sini -->
+                    </tbody>
+                </table>
+                <div class="alert alert-info">
+                    <strong>Petunjuk Aksi:</strong><br>
+                    Gunakan tombol di kolom <strong>Aksi</strong> untuk memperbarui status absensi karyawan:
+                    <ul>
+                        <li><button class="btn btn-success" disabled><i class="fas fa-check"></i></button> <strong>Hadir:</strong> Tandai karyawan sebagai hadir.</li>
+                        <li><button class="btn btn-warning" disabled><i class="fas fa-clock"></i></button> <strong>Izin:</strong> Tandai karyawan sebagai izin.</li>
+                        <li><button class="btn btn-danger" disabled><i class="fas fa-times"></i></button> <strong>Alpa:</strong> Tandai karyawan sebagai alpa.</li>
+                    </ul>
+                    Sanksi untuk alpa dapat berupa pemotongan gaji, peringatan tertulis, atau tindakan disipliner lainnya.
+                </div>
+            </div>
+            
+            <div class="tab-pane container fade" id="izin">
+                <h3>Data Izin</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Tanggal Izin</th>
+                            <th>Alasan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="izinTableBody">
+                        <!-- Data izin akan diisi di sini -->
+                    </tbody>
+                </table>
+                <div class="alert alert-info">
+                    <strong>Hak Izin:</strong><br>
+                    Karyawan yang mengajukan izin berhak untuk mendapatkan <strong>cuti tahunan</strong> dan <strong>pengganti jam kerja</strong> sesuai dengan peraturan perusahaan. 
+                    <strong>Catatan:</strong> Pemotongan gaji akan berlaku jika izin tidak disetujui atau tidak ada alasan yang valid.
+                </div>
+            </div>
+            <div class="tab-pane container fade" id="lembur">
+                <h3>Data Lembur</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Tanggal Lembur</th>
+                            <th>Jumlah Jam</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lemburTableBody">
+                        <!-- Data lembur akan diisi di sini -->
+                    </tbody>
+                </table>
+                <div class="alert alert-info">
+                    <strong>Insentif Lembur:</strong><br>
+                    Setiap karyawan berhak mendapatkan insentif sebesar <strong>Rp 20.000</strong> untuk setiap jam lembur yang dilakukan.
+                     Pastikan data lembur dicatat dengan benar agar insentif dapat dihitung dan diberikan.<br><br>
+                     <p><strong>Catatan:</strong> Karyawan perlu mendapatkan izin dari atasan langsung sebelum melakukan lembur. 
+                        Pastikan untuk mengikuti kebijakan perusahaan mengenai lembur dan melaporkan jam lembur kepada departemen SDM untuk penghitungan insentif yang sesuai.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Mendapatkan path saat ini
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    
+        // Menghapus kelas active dari semua tautan
+        navLinks.forEach(link => link.classList.remove('active'));
+    
+        // Menambahkan kelas active pada tautan yang sesuai
+        navLinks.forEach(link => {
+            const linkPath = new URL(link.href).pathname;
+    
+            if (linkPath === currentPath) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+    <script>
+        function confirmLogout() {
+            if (confirm("Apakah Anda yakin ingin logout?")) {
+                // Jika ya, redirect ke halaman login
+                window.location.href = 'logout.html';
+            }
+        }
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
